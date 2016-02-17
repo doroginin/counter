@@ -16,11 +16,11 @@ class Counter implements CounterInterface
 
     public function count()
     {
-        if ($this->_storage instanceof RWMutexAwayInterface) {
+        if ($this->_storage instanceof RWMutexAwareInterface) {
             $this->_storage->RLock();
         }
         $count = $this->_storage->count($_SERVER['SERVER_NAME']);
-        if ($this->_storage instanceof RWMutexAwayInterface) {
+        if ($this->_storage instanceof RWMutexAwareInterface) {
             $this->_storage->RUnlock();
         }
         return $count;
@@ -35,11 +35,11 @@ class Counter implements CounterInterface
         if ($unique) {
             setcookie('cc', true, time() + static::SESSION_DURATION);
         }
-        if ($this->_storage instanceof RWMutexAwayInterface) {
+        if ($this->_storage instanceof RWMutexAwareInterface) {
             $this->_storage->Lock();
         }
         $this->_storage->addVisit($_SERVER['SERVER_NAME'], $unique);
-        if ($this->_storage instanceof RWMutexAwayInterface) {
+        if ($this->_storage instanceof RWMutexAwareInterface) {
             $this->_storage->Unlock();
         }
         return $this;
@@ -50,11 +50,11 @@ class Counter implements CounterInterface
      */
     public function report()
     {
-        if ($this->_storage instanceof RWMutexAwayInterface) {
+        if ($this->_storage instanceof RWMutexAwareInterface) {
             $this->_storage->RLock();
         }
         $data = $this->_storage->report();
-        if ($this->_storage instanceof RWMutexAwayInterface) {
+        if ($this->_storage instanceof RWMutexAwareInterface) {
             $this->_storage->RUnlock();
         }
         return $data;

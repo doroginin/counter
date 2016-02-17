@@ -2,10 +2,10 @@
 
 namespace dd\Counter\Storage;
 
-use dd\Counter\RWMutexAwayInterface;
+use dd\Counter\RWMutexAwareInterface;
 use dd\Counter\StorageInterface;
 
-class FileStorage implements StorageInterface, RWMutexAwayInterface
+class FileStorage implements StorageInterface, RWMutexAwareInterface
 {
     /**
      * @var \SplFileObject

@@ -2,7 +2,7 @@
 
 namespace dd\Counter;
 
-interface RWMutexAwayInterface
+interface RWMutexAwareInterface
 {
     /**
      * Locks for writing

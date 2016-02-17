@@ -4,4 +4,5 @@ Simple php counter
 
 ## Install
 
-./composer install
+* mysql -uroot -ppassword < ./sql/schema.sql
+* ./composer install
